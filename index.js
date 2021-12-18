@@ -55,7 +55,9 @@ class Perspective {
       }
       axios
         .post(COMMENT_ANALYZER_URL, resource, {
-          params: {key: this.options.apiKey},
+          params: {key: this.options.apiKey,
+                  projectId: process.env.GOOGLE_TRANSLATE_PROJECT_ID ? process.env.GOOGLE_TRANSLATE_PROJECT_ID : undefined,
+                  },
         })
         .then(response => {
           resolve(response.data);
